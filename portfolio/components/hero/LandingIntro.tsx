@@ -11,6 +11,8 @@ import {
 import { ScrollIndicator } from "@/components/shared/ScrollIndicator";
 import { heroQuote } from "@/data/profile";
 import { materializeChar, materializeContainer } from "@/lib/animations";
+import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { ui } from "@/lib/i18n/ui";
 
 // Shader is client-only WebGL — never server-render it.
 const ShaderAnimation = dynamic(
@@ -55,6 +57,7 @@ function MaterializeWord({
 export function LandingIntro() {
   const ref = useRef<HTMLDivElement>(null);
   const [revealName, setRevealName] = useState(false);
+  const { lang } = useLanguage();
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -93,7 +96,7 @@ export function LandingIntro() {
         >
           <motion.blockquote style={{ y: quoteY }} className="max-w-3xl text-center">
             <p className="text-balance font-body text-2xl font-extralight leading-snug text-ink-soft sm:text-3xl md:text-4xl">
-              &ldquo;{heroQuote.text}&rdquo;
+              &ldquo;{heroQuote.text[lang]}&rdquo;
             </p>
             <cite className="mt-6 block font-mono text-xs uppercase not-italic tracking-[0.3em] text-ink-muted">
               — {heroQuote.author}
@@ -110,16 +113,19 @@ export function LandingIntro() {
             className="text-center"
           >
             <motion.p variants={materializeChar} className="eyebrow mb-6">
-              Data Scientist
+              {ui.hero.role[lang]}
             </motion.p>
+            {/* Style A — Monolith: name + surname share identical formatting
+                (same size, weight, colour). Sized to the longer word so
+                neither overflows. */}
             <h1 className="font-heading font-semibold leading-[0.88] tracking-tight text-ink">
               <MaterializeWord
                 text="Michał"
-                className="block text-[clamp(3rem,13vw,11rem)]"
+                className="block text-[clamp(2.1rem,9.2vw,8rem)]"
               />
               <MaterializeWord
                 text="Szczepkowski"
-                className="mt-1 block text-[clamp(2.1rem,9.2vw,8rem)] text-ink-muted"
+                className="mt-1 block text-[clamp(2.1rem,9.2vw,8rem)]"
               />
             </h1>
           </motion.div>

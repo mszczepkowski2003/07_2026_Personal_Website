@@ -4,8 +4,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { navCards } from "@/lib/nav";
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/animations";
+import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { ui } from "@/lib/i18n/ui";
 
 export function NavCards() {
+  const { lang } = useLanguage();
+
   return (
     <section className="relative px-6 pb-40 pt-12">
       <div className="mx-auto max-w-content">
@@ -16,7 +20,7 @@ export function NavCards() {
           transition={{ duration: 0.6 }}
           className="eyebrow mb-12 text-center"
         >
-          Explore
+          {ui.navCards.explore[lang]}
         </motion.p>
 
         <motion.div
@@ -43,10 +47,10 @@ export function NavCards() {
 
                 <div>
                   <h2 className="font-heading text-3xl font-medium tracking-tight text-ink transition-colors duration-200 group-hover:text-accent md:text-4xl">
-                    {card.label}
+                    {card.label[lang]}
                   </h2>
                   <p className="mt-3 max-w-xs text-sm font-extralight leading-relaxed text-ink-muted">
-                    {card.teaser}
+                    {card.teaser[lang]}
                   </p>
                 </div>
               </Link>

@@ -1,4 +1,8 @@
+"use client";
+
 import type { ProjectDemo } from "@/lib/types";
+import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { ui } from "@/lib/i18n/ui";
 
 /**
  * Future-proof demo slot. Renders a styled placeholder today; when `status`
@@ -6,6 +10,8 @@ import type { ProjectDemo } from "@/lib/types";
  * NO template change required — purely data-driven from data/projects.ts.
  */
 export function DemoSlot({ demo, title }: { demo: ProjectDemo; title: string }) {
+  const { lang } = useLanguage();
+
   if (demo.status === "live" && demo.kind === "iframe" && demo.endpoint) {
     return (
       <div className="overflow-hidden border border-accent/40">
@@ -22,12 +28,12 @@ export function DemoSlot({ demo, title }: { demo: ProjectDemo; title: string }) 
   // Placeholder state (coming-soon, or live component not yet wired).
   return (
     <div className="relative flex min-h-[260px] flex-col items-center justify-center gap-4 border border-dashed border-accent/40 bg-surface/40 p-10 text-center">
-      <span className="eyebrow text-accent">Demo</span>
+      <span className="eyebrow text-accent">{ui.demo.label[lang]}</span>
       <p className="max-w-md text-sm font-extralight leading-relaxed text-ink-muted">
-        {demo.note}
+        {demo.note[lang]}
       </p>
       <span className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-ink-faint">
-        Interactive demo coming soon
+        {ui.demo.comingSoon[lang]}
       </span>
     </div>
   );

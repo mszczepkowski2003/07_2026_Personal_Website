@@ -14,7 +14,13 @@ export interface TimelineItem {
   award?: { label: string; meta: string };
 }
 
-export function Timeline({ items }: { items: TimelineItem[] }) {
+export function Timeline({
+  items,
+  placeholderLabel = "* placeholder entry",
+}: {
+  items: TimelineItem[];
+  placeholderLabel?: string;
+}) {
   return (
     <motion.ol
       variants={staggerContainer}
@@ -61,7 +67,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
           )}
           {item.invented && (
             <span className="mt-3 inline-block font-mono text-[0.6rem] uppercase tracking-widest text-ink-faint/70">
-              * placeholder entry
+              {placeholderLabel}
             </span>
           )}
         </motion.li>
