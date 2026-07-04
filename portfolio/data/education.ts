@@ -4,21 +4,35 @@ import type { EducationEntry } from "@/lib/types";
 // annotation rather than a separate entry, since the award was won for it.
 export const degrees: EducationEntry[] = [
   {
-    title: "M.Sc. — Computer Science & Econometrics",
-    institution: "University of Gdańsk",
+    title: {
+      en: "M.Sc. — Computer Science & Econometrics",
+      pl: "Mgr — Informatyka i Ekonometria",
+    },
+    institution: { en: "University of Gdańsk", pl: "Uniwersytet Gdański" },
     period: "2025 — 2027",
-    detail: "Big Data specialization.",
+    detail: { en: "Big Data specialization.", pl: "Specjalizacja Big Data." },
     highlight: true,
   },
   {
-    title: "B.Sc. — Computer Science & Econometrics",
-    institution: "University of Gdańsk",
+    title: {
+      en: "B.Sc. — Computer Science & Econometrics",
+      pl: "Lic. — Informatyka i Ekonometria",
+    },
+    institution: { en: "University of Gdańsk", pl: "Uniwersytet Gdański" },
     period: "2022 — 2025",
-    detail: "Methods of Data Analysis specialization.",
+    detail: {
+      en: "Methods of Data Analysis specialization.",
+      pl: "Specjalizacja Metody Analizy Danych.",
+    },
     award: {
-      label:
-        "🏆 Thesis awarded the Main Award — on automating real estate appraisal with Random Forest.",
-      meta: "Polish Economic Society · 2025",
+      label: {
+        en: "🏆 Thesis awarded the Main Award — on automating real estate appraisal with Random Forest.",
+        pl: "🏆 Praca nagrodzona Nagrodą Główną — za automatyzację wyceny nieruchomości z użyciem Random Forest.",
+      },
+      meta: {
+        en: "Polish Economic Society · 2025",
+        pl: "Polskie Towarzystwo Ekonomiczne · 2025",
+      },
     },
   },
 ];
@@ -26,8 +40,11 @@ export const degrees: EducationEntry[] = [
 // Courses & certifications — kept separate from formal degrees.
 export const courses: EducationEntry[] = [
   {
-    title: "Deep Learning Specialization",
-    institution: "Coursera",
+    title: {
+      en: "Deep Learning Specialization",
+      pl: "Specjalizacja Deep Learning",
+    },
+    institution: { en: "Coursera", pl: "Coursera" },
     period: "2025",
   },
 ];

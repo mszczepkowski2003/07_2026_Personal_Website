@@ -1,17 +1,20 @@
+import type { Localized } from "@/lib/i18n/config";
+
 export interface ProjectLink {
-  label: string;
+  /** Localized label; the URL itself is language-agnostic. */
+  label: Localized;
   url: string;
 }
 
 export interface ApproachBlock {
-  heading: string;
-  points: string[];
+  heading: Localized;
+  points: Localized[];
 }
 
 export interface ProjectStat {
-  /** Numeric target — counts up from 0 on scroll into view. */
+  /** Numeric target — counts up from 0 on scroll into view. Not localized. */
   value: number;
-  label: string;
+  label: Localized;
   prefix?: string;
   suffix?: string;
   /** Decimal places to display (e.g. 2 for an AUC of 0.94). */
@@ -25,48 +28,51 @@ export interface ProjectDemo {
   /** Future API / hosted demo URL — consumed when status flips to "live". */
   endpoint?: string;
   /** Visible note shown in the styled placeholder slot. */
-  note: string;
+  note: Localized;
 }
 
 export interface Project {
+  /** Stable identifier shared across languages — drives the route. */
   slug: string;
-  title: string;
-  oneLiner: string;
+  title: Localized;
+  oneLiner: Localized;
   featured: boolean;
   /** Clearly-invented placeholder entry vs. real work. */
   invented?: boolean;
+  /** The language the project/report itself is written in. */
   mainLanguage?: "English" | "Polish";
   techStack: string[];
   /** Public path to a hero image/screenshot; optional placeholder. */
   heroImage?: string;
 
-  overview: string;
+  overview: Localized;
   /** Headline metrics — rendered as animated counters. Optional. */
   stats?: ProjectStat[];
   approach: ApproachBlock[];
-  results: string[];
+  results: Localized[];
   links: ProjectLink[];
   demo: ProjectDemo;
 }
 
 export interface ExperienceEntry {
-  role: string;
-  company: string;
-  period: string;
-  description: string;
+  role: Localized;
+  company: Localized;
+  period: Localized;
+  description: Localized;
   invented?: boolean;
 }
 
 export interface EducationAward {
-  label: string;
-  meta: string;
+  label: Localized;
+  meta: Localized;
 }
 
 export interface EducationEntry {
-  title: string;
-  institution: string;
+  title: Localized;
+  institution: Localized;
+  /** Year ranges read the same in both languages, so this stays plain. */
   period: string;
-  detail?: string;
+  detail?: Localized;
   highlight?: boolean;
   /** A distinction tied to this entry — e.g. a thesis award under a degree. */
   award?: EducationAward;

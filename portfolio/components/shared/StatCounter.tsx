@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { animate, motion, useInView, useMotionValue } from "framer-motion";
 import type { ProjectStat } from "@/lib/types";
 import { EASE_OUT, fadeUp } from "@/lib/animations";
+import { useLanguage } from "@/lib/i18n/LanguageProvider";
 
 /** A single metric that counts up from 0 → value when scrolled into view. */
 export function StatCounter({ stat }: { stat: ProjectStat }) {
@@ -12,6 +13,7 @@ export function StatCounter({ stat }: { stat: ProjectStat }) {
   const inView = useInView(inViewRef, { once: true, amount: 0.6 });
   const count = useMotionValue(0);
   const decimals = stat.decimals ?? 0;
+  const { lang } = useLanguage();
 
   useEffect(() => {
     if (!inView) return;
@@ -38,7 +40,7 @@ export function StatCounter({ stat }: { stat: ProjectStat }) {
         {stat.suffix}
       </div>
       <div className="mt-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-ink-muted">
-        {stat.label}
+        {stat.label[lang]}
       </div>
     </motion.div>
   );

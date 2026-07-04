@@ -15,7 +15,7 @@ export function StatGrid({ stats }: { stats: ProjectStat[] }) {
       className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4"
     >
       {stats.map((stat) => (
-        <StatCounter key={stat.label} stat={stat} />
+        <StatCounter key={stat.label.en} stat={stat} />
       ))}
     </motion.div>
   );

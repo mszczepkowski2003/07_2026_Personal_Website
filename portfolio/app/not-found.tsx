@@ -1,14 +1,20 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { ui } from "@/lib/i18n/ui";
 
 export default function NotFound() {
+  const { lang } = useLanguage();
+
   return (
     <div className="flex min-h-svh flex-col items-center justify-center px-6 text-center">
-      <p className="eyebrow mb-6">404</p>
+      <p className="eyebrow mb-6">{ui.notFound.code[lang]}</p>
       <h1 className="font-heading text-5xl font-semibold tracking-tight text-ink sm:text-6xl">
-        Page not found
+        {ui.notFound.title[lang]}
       </h1>
       <p className="mt-5 max-w-md text-base font-extralight leading-relaxed text-ink-muted">
-        The page you&rsquo;re looking for doesn&rsquo;t exist or has moved.
+        {ui.notFound.body[lang]}
       </p>
       <Link
         href="/"
@@ -17,7 +23,7 @@ export default function NotFound() {
         <span className="transition-transform duration-200 group-hover:-translate-x-1">
           ←
         </span>
-        Back home
+        {ui.notFound.back[lang]}
       </Link>
     </div>
   );

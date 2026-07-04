@@ -6,9 +6,13 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks } from "@/lib/nav";
 import { profile } from "@/data/profile";
+import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { ui } from "@/lib/i18n/ui";
+import { LanguageToggle } from "@/components/shared/LanguageToggle";
 
 export function Navbar() {
   const pathname = usePathname();
+  const { lang } = useLanguage();
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -54,45 +58,50 @@ export function Navbar() {
             {profile.name}
           </Link>
 
-          {/* Desktop links */}
-          <ul className="hidden items-center gap-8 md:flex">
-            {navLinks.map((link) => {
-              const active =
-                pathname === link.href || pathname.startsWith(link.href + "/");
-              return (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className={`font-mono text-xs uppercase tracking-widest transition-colors ${
-                      active ? "text-accent" : "text-ink-muted hover:text-ink"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <div className="flex items-center gap-6">
+            {/* Desktop links */}
+            <ul className="hidden items-center gap-8 md:flex">
+              {navLinks.map((link) => {
+                const active =
+                  pathname === link.href || pathname.startsWith(link.href + "/");
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className={`font-mono text-xs uppercase tracking-widest transition-colors ${
+                        active ? "text-accent" : "text-ink-muted hover:text-ink"
+                      }`}
+                    >
+                      {link.label[lang]}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
 
-          {/* Mobile hamburger */}
-          <button
-            type="button"
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((v) => !v)}
-            className="relative z-50 flex h-8 w-8 flex-col items-center justify-center gap-1.5 md:hidden"
-          >
-            <span
-              className={`h-px w-6 bg-ink transition-transform duration-300 ${
-                menuOpen ? "translate-y-[3.5px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`h-px w-6 bg-ink transition-transform duration-300 ${
-                menuOpen ? "-translate-y-[3.5px] -rotate-45" : ""
-              }`}
-            />
-          </button>
+            {/* Language switch (visible on all breakpoints) */}
+            <LanguageToggle />
+
+            {/* Mobile hamburger */}
+            <button
+              type="button"
+              aria-label={ui.nav.toggleMenu[lang]}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+              className="relative z-50 flex h-8 w-8 flex-col items-center justify-center gap-1.5 md:hidden"
+            >
+              <span
+                className={`h-px w-6 bg-ink transition-transform duration-300 ${
+                  menuOpen ? "translate-y-[3.5px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`h-px w-6 bg-ink transition-transform duration-300 ${
+                  menuOpen ? "-translate-y-[3.5px] -rotate-45" : ""
+                }`}
+              />
+            </button>
+          </div>
         </nav>
       </motion.header>
 
@@ -118,10 +127,19 @@ export function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   className="font-heading text-3xl font-medium tracking-tight text-ink transition-colors hover:text-accent"
                 >
-                  {link.label}
+                  {link.label[lang]}
                 </Link>
               </motion.div>
             ))}
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.08 * navLinks.length + 0.1, duration: 0.4 }}
+              className="mt-4"
+            >
+              <LanguageToggle className="text-sm" />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

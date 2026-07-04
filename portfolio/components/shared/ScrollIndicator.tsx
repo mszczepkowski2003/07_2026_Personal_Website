@@ -1,8 +1,15 @@
+"use client";
+
+import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { ui } from "@/lib/i18n/ui";
+
 export function ScrollIndicator() {
+  const { lang } = useLanguage();
+
   return (
     <div className="pointer-events-none flex flex-col items-center gap-3">
       <span className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-ink-muted">
-        Scroll
+        {ui.hero.scroll[lang]}
       </span>
       <span className="scroll-cue relative block h-10 w-px bg-line">
         <span className="scroll-cue-dot absolute left-1/2 top-0 h-2 w-px -translate-x-1/2 bg-accent" />
