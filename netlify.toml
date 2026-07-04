@@ -1,0 +1,10 @@
+# Netlify build configuration.
+# The Next.js app lives in the portfolio/ subfolder, so we point Netlify there.
+[build]
+  base = "portfolio"
+  command = "npm run build"
+  publish = ".next"
+
+# Official Next.js runtime — enables SSR, image optimization, etc.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
