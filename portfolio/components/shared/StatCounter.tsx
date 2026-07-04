@@ -14,6 +14,13 @@ export function StatCounter({ stat }: { stat: ProjectStat }) {
   const count = useMotionValue(0);
   const decimals = stat.decimals ?? 0;
   const { lang } = useLanguage();
+  // Match the copy's number style: "0.94" in English, "0,94" in Polish.
+  const locale = lang === "pl" ? "pl-PL" : "en-US";
+  const format = (n: number) =>
+    n.toLocaleString(locale, {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals,
+    });
 
   useEffect(() => {
     if (!inView) return;
@@ -23,20 +30,21 @@ export function StatCounter({ stat }: { stat: ProjectStat }) {
     });
     const unsubscribe = count.on("change", (latest) => {
       if (valueRef.current) {
-        valueRef.current.textContent = latest.toFixed(decimals);
+        valueRef.current.textContent = format(latest);
       }
     });
     return () => {
       controls.stop();
       unsubscribe();
     };
-  }, [inView, count, stat.value, decimals]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, count, stat.value, decimals, locale]);
 
   return (
     <motion.div ref={inViewRef} variants={fadeUp} className="border-l border-accent/40 pl-5">
       <div className="font-heading text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
         {stat.prefix}
-        <span ref={valueRef}>{(0).toFixed(decimals)}</span>
+        <span ref={valueRef}>{format(0)}</span>
         {stat.suffix}
       </div>
       <div className="mt-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-ink-muted">

@@ -87,7 +87,7 @@ export function LanguageToggle({ className = "" }: { className?: string }) {
             onClick={() => setLang(code)}
             aria-pressed={active}
             aria-label={label[lang]}
-            className={`flex items-center justify-center border transition-all duration-200 ${
+            className={`flex items-center justify-center border p-1 transition-all duration-200 ${
               active
                 ? "border-accent opacity-100"
                 : "border-transparent opacity-45 grayscale hover:opacity-90 hover:grayscale-0"

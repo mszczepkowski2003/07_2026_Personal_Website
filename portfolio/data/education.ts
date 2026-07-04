@@ -33,6 +33,7 @@ export const degrees: EducationEntry[] = [
         en: "Polish Economic Society · 2025",
         pl: "Polskie Towarzystwo Ekonomiczne · 2025",
       },
+      url: "https://www.gdansk.pte.pl/aktualnosci/laureat-xxii-konkursu-prac-licencjackich",
     },
   },
 ];

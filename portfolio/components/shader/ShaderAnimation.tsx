@@ -82,15 +82,29 @@ export function ShaderAnimation() {
     window.addEventListener("resize", onResize, false);
 
     let animationId = 0;
+    let running = false;
     const animate = () => {
       animationId = requestAnimationFrame(animate);
       uniforms.time.value += 0.05;
       renderer.render(scene, camera);
     };
-    animate();
+
+    // Only render while the hero is actually on screen — saves GPU/battery
+    // once the visitor has scrolled past it.
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !running) {
+        running = true;
+        animate();
+      } else if (!entry.isIntersecting && running) {
+        running = false;
+        cancelAnimationFrame(animationId);
+      }
+    });
+    observer.observe(container);
 
     return () => {
       window.removeEventListener("resize", onResize);
+      observer.disconnect();
       cancelAnimationFrame(animationId);
       if (renderer.domElement.parentNode === container) {
         container.removeChild(renderer.domElement);

@@ -11,7 +11,7 @@ export interface TimelineItem {
   highlight?: boolean;
   invented?: boolean;
   /** Subtle distinction tied to this entry (e.g. a thesis award). */
-  award?: { label: string; meta: string };
+  award?: { label: string; meta: string; url?: string };
 }
 
 export function Timeline({
@@ -59,9 +59,23 @@ export function Timeline({
                 <p className="text-sm font-extralight leading-relaxed text-ink-soft">
                   {item.award.label}
                 </p>
-                <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-faint">
-                  {item.award.meta}
-                </p>
+                {item.award.url ? (
+                  <a
+                    href={item.award.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group mt-3 inline-flex items-center gap-2 border border-accent/40 px-3.5 py-2 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-accent transition-colors hover:border-accent hover:bg-accent/10"
+                  >
+                    {item.award.meta}
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">
+                      ↗
+                    </span>
+                  </a>
+                ) : (
+                  <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-faint">
+                    {item.award.meta}
+                  </p>
+                )}
               </div>
             </div>
           )}

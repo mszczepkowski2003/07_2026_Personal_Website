@@ -16,7 +16,8 @@ export const metadata: Metadata = {
   },
   // Metadata is static per build; English is used as the canonical SEO copy.
   description: profile.bio.en,
-  metadataBase: new URL("https://example.com"),
+  // Netlify injects URL at build time; falls back to localhost for dev.
+  metadataBase: new URL(process.env.URL ?? "http://localhost:3000"),
   openGraph: {
     title: `${profile.name} — ${profile.role}`,
     description: profile.bio.en,

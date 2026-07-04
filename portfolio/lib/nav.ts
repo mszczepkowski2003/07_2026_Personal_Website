@@ -49,11 +49,11 @@ export interface NavLinkItem {
   href: string;
 }
 
-// Full top-nav set (adds Contact).
+// Full top-nav set (adds Contact). Mirrors the landing-card order.
 export const navLinks: NavLinkItem[] = [
-  { href: "/projects", label: { en: "Projects", pl: "Projekty" } },
   { href: "/about", label: { en: "About", pl: "O mnie" } },
   { href: "/experience", label: { en: "Experience", pl: "Doświadczenie" } },
   { href: "/education", label: { en: "Education", pl: "Edukacja" } },
+  { href: "/projects", label: { en: "Projects", pl: "Projekty" } },
   { href: "/contact", label: { en: "Contact", pl: "Kontakt" } },
 ];

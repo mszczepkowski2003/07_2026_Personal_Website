@@ -34,7 +34,7 @@ export const projects: Project[] = [
       "Quarto",
     ],
     overview: {
-      en: "A business-oriented end-to-end machine learning pipeline designed to identify customers that are likely to resign from Telco services. The project handles data consolidation from six raw datasets into PostgreSQL database, advanced preprocessing with custom Scikit-Learn estimators, extensive EDA , rigorous hyperparameter tunning and deployment via a Dockerized REST API.",
+      en: "A business-oriented, end-to-end machine learning pipeline designed to identify customers likely to cancel their telco services. The project covers consolidating six raw datasets into a PostgreSQL database, advanced preprocessing with custom Scikit-Learn estimators, extensive EDA, rigorous hyperparameter tuning, and deployment via a Dockerized REST API.",
       pl: "Zorientowany biznesowo, kompleksowy potok (end-to-end) uczenia maszynowego stworzony w celu identyfikacji klientów z potencjałem do rezygnacji z usług telekomunikacyjnych. Projekt obejmuje konsolidację sześciu surowych zbiorów danych w bazie PostgreSQL, zaawansowany preprocessing z wykorzystaniem własnych estymatorów Scikit-Learn, szczegółową eksplorację danych (EDA), rygorystyczne dostrajanie hiperparametrów oraz wdrożenie w postaci skonteneryzowanego API REST (Docker).",
     },
     stats: [
@@ -126,7 +126,7 @@ export const projects: Project[] = [
     results: [
       {
         en: "Deployed an operational early warning system to drive customer retention efforts.",
-        pl: "Dostarczenie działającego systemu wczesnego reagowania wspomagającego proces utrzymania klientów",
+        pl: "Dostarczenie działającego systemu wczesnego reagowania wspomagającego proces utrzymania klientów.",
       },
       {
         en: "AUC 0.93–0.94 across both candidate models.",
@@ -308,7 +308,7 @@ export const projects: Project[] = [
     ],
     approach: [
       {
-        heading: { en: "Core Development", pl: "Rozwój rdzenia" },
+        heading: { en: "Core Development", pl: "Trzon projektu" },
         points: [
           {
             en: "Built a centralized main script managing the workflow from raw data to evaluation report.",

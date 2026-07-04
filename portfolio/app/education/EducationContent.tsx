@@ -17,7 +17,7 @@ export function EducationContent() {
     description: e.detail?.[lang],
     highlight: e.highlight,
     award: e.award
-      ? { label: e.award.label[lang], meta: e.award.meta[lang] }
+      ? { label: e.award.label[lang], meta: e.award.meta[lang], url: e.award.url }
       : undefined,
   }));
 

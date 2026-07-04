@@ -65,6 +65,8 @@ export interface ExperienceEntry {
 export interface EducationAward {
   label: Localized;
   meta: Localized;
+  /** External page about the award (announcement, laureate list, etc.). */
+  url?: string;
 }
 
 export interface EducationEntry {
