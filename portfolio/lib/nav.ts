@@ -8,15 +8,8 @@ export interface NavCardItem {
 
 // The four landing nav-cards. Contact is intentionally NOT a card —
 // it lives in the navbar + footer only.
+// Order here drives the 01–04 numbering on the landing page.
 export const navCards: NavCardItem[] = [
-  {
-    href: "/projects",
-    label: { en: "Projects", pl: "Projekty" },
-    teaser: {
-      en: "End-to-end ML, from raw data to deployed APIs.",
-      pl: "Kompleksowy ML — od surowych danych po wdrożone API.",
-    },
-  },
   {
     href: "/about",
     label: { en: "About", pl: "O mnie" },
@@ -39,6 +32,14 @@ export const navCards: NavCardItem[] = [
     teaser: {
       en: "Computer Science & Econometrics, plus an award or two.",
       pl: "Informatyka i ekonometria — z nagrodą czy dwiema.",
+    },
+  },
+  {
+    href: "/projects",
+    label: { en: "Projects", pl: "Projekty" },
+    teaser: {
+      en: "End-to-end ML, from raw data to deployed APIs.",
+      pl: "Kompleksowy ML — od surowych danych po wdrożone API.",
     },
   },
 ];

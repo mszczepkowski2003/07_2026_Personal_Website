@@ -34,8 +34,8 @@ export const projects: Project[] = [
       "Quarto",
     ],
     overview: {
-      en: "An end-to-end churn pipeline covering the full lifecycle: consolidating six raw datasets into a PostgreSQL database, engineering a leak-proof preprocessing pipeline, modelling under heavy class imbalance, and deploying the result as a reproducible API.",
-      pl: "Kompleksowy pipeline predykcji rezygnacji obejmujący pełny cykl życia: konsolidację sześciu surowych zbiorów danych w bazę PostgreSQL, zaprojektowanie odpornego na wycieki pipeline'u przetwarzania, modelowanie przy silnym niezbalansowaniu klas oraz wdrożenie wyniku jako powtarzalne API.",
+      en: "A business-oriented end-to-end machine learning pipeline designed to identify customers that are likely to resign from Telco services. The project handles data consolidation from six raw datasets into PostgreSQL database, advanced preprocessing with custom Scikit-Learn estimators, extensive EDA , rigorous hyperparameter tunning and deployment via a Dockerized REST API.",
+      pl: "Zorientowany biznesowo, kompleksowy potok (end-to-end) uczenia maszynowego stworzony w celu identyfikacji klientów z potencjałem do rezygnacji z usług telekomunikacyjnych. Projekt obejmuje konsolidację sześciu surowych zbiorów danych w bazie PostgreSQL, zaawansowany preprocessing z wykorzystaniem własnych estymatorów Scikit-Learn, szczegółową eksplorację danych (EDA), rygorystyczne dostrajanie hiperparametrów oraz wdrożenie w postaci skonteneryzowanego API REST (Docker).",
     },
     stats: [
       {
@@ -48,8 +48,8 @@ export const projects: Project[] = [
         label: { en: "Optuna trials run", pl: "Uruchomionych prób Optuna" },
       },
       {
-        value: 1400,
-        suffix: "+",
+        value: 20,
+        suffix: "%",
         label: {
           en: "Observations recovered",
           pl: "Odzyskanych obserwacji",
@@ -97,7 +97,7 @@ export const projects: Project[] = [
             pl: "Porównałem modele XGBoost i MLP — oba osiągnęły AUC 0,93–0,94.",
           },
           {
-            en: "Ran 300 Optuna Bayesian-optimization trials with pruning, terminating ~80% of weak trials early.",
+            en: "Ran 300 Optuna Bayesian-optimization trials with pruning across 2 models, terminating ~80% of weak trials early.",
             pl: "Przeprowadziłem 300 prób optymalizacji bayesowskiej Optuna z pruningiem, wcześnie kończąc ~80% słabych prób.",
           },
           {
@@ -114,7 +114,7 @@ export const projects: Project[] = [
         points: [
           {
             en: "Served the final model as a RESTful API with FastAPI + Docker for full reproducibility.",
-            pl: "Udostępniłem finalny model jako API RESTful z FastAPI + Docker dla pełnej powtarzalności.",
+            pl: "Udostępniłem finalny model jako API RESTful z FastAPI + Docker dla odtwarzalności i teoretycznego wdrożenia modelu do produkcji.",
           },
           {
             en: "Produced a technical & business report in Quarto documenting EDA and preprocessing.",
@@ -124,6 +124,10 @@ export const projects: Project[] = [
       },
     ],
     results: [
+      {
+        en: "Deployed an operational early warning system to drive customer retention efforts.",
+        pl: "Dostarczenie działającego systemu wczesnego reagowania wspomagającego proces utrzymania klientów",
+      },
       {
         en: "AUC 0.93–0.94 across both candidate models.",
         pl: "AUC 0,93–0,94 dla obu modeli kandydujących.",
@@ -294,7 +298,7 @@ export const projects: Project[] = [
     },
     stats: [
       {
-        value: 3,
+        value: 5,
         label: { en: "Classifiers benchmarked", pl: "Porównanych klasyfikatorów" },
       },
       {
@@ -410,64 +414,6 @@ export const projects: Project[] = [
       note: {
         en: "A premium-estimator demo is planned for this slot.",
         pl: "Demo estymatora składki jest planowane dla tego miejsca.",
-      },
-    },
-  },
-  {
-    // INVENTED placeholder project (clearly fictional) — fills the grid.
-    slug: "semantic-paper-search",
-    title: {
-      en: "Semantic Paper Search",
-      pl: "Semantyczne wyszukiwanie publikacji",
-    },
-    oneLiner: {
-      en: "Vector search over a research-paper corpus with an embeddings + retrieval API.",
-      pl: "Wyszukiwanie wektorowe w korpusie publikacji naukowych z API embeddingów i retrievalu.",
-    },
-    featured: false,
-    invented: true,
-    mainLanguage: "English",
-    techStack: ["Python", "sentence-transformers", "FAISS", "FastAPI"],
-    overview: {
-      en: "A retrieval system that lets you search a corpus of research papers by meaning rather than keywords, exposing a clean API for semantic queries — a step into NLP and retrieval beyond tabular ML.",
-      pl: "System retrievalu pozwalający przeszukiwać korpus publikacji naukowych według znaczenia, a nie słów kluczowych, udostępniający czyste API do zapytań semantycznych — krok w stronę NLP i retrievalu poza danymi tabelarycznymi.",
-    },
-    approach: [
-      {
-        heading: { en: "Retrieval Pipeline", pl: "Pipeline retrievalu" },
-        points: [
-          {
-            en: "Embedded paper abstracts with sentence-transformers.",
-            pl: "Osadziłem abstrakty publikacji za pomocą sentence-transformers.",
-          },
-          {
-            en: "Indexed vectors in FAISS for fast approximate nearest-neighbour search.",
-            pl: "Zaindeksowałem wektory w FAISS dla szybkiego przybliżonego wyszukiwania najbliższych sąsiadów.",
-          },
-          {
-            en: "Exposed a FastAPI endpoint returning ranked, semantically-matched results.",
-            pl: "Udostępniłem endpoint FastAPI zwracający uszeregowane, dopasowane semantycznie wyniki.",
-          },
-        ],
-      },
-    ],
-    results: [
-      {
-        en: "Sub-second semantic queries over the indexed corpus.",
-        pl: "Zapytania semantyczne poniżej sekundy w zaindeksowanym korpusie.",
-      },
-      {
-        en: "A reusable retrieval backbone ready for a future RAG layer.",
-        pl: "Wielokrotnego użytku szkielet retrievalu gotowy pod przyszłą warstwę RAG.",
-      },
-    ],
-    links: [],
-    demo: {
-      status: "coming-soon",
-      kind: "iframe",
-      note: {
-        en: "A live semantic-search box is planned for this slot.",
-        pl: "Pole wyszukiwania semantycznego na żywo jest planowane dla tego miejsca.",
       },
     },
   },

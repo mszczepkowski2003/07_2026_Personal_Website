@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { profile, skillGroups } from "@/data/profile";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { SectionReveal } from "@/components/shared/SectionReveal";
@@ -15,12 +16,17 @@ export function AboutContent() {
       <PageHeader eyebrow={ui.about.eyebrow[lang]} title={ui.about.title[lang]} />
 
       <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-[280px_1fr] md:gap-16">
-        {/* Profile photo placeholder */}
+        {/* Profile photo — swap the file at /public/profile.jpg to change it. */}
         <SectionReveal>
-          <div className="flex aspect-[3/4] items-center justify-center border border-line bg-surface/40">
-            <span className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-ink-faint">
-              {ui.about.photo[lang]}
-            </span>
+          <div className="relative aspect-[3/4] overflow-hidden border border-line bg-surface/40">
+            <Image
+              src="/profile.jpg"
+              alt={profile.name}
+              fill
+              sizes="(max-width: 768px) 100vw, 280px"
+              className="object-cover object-center"
+              priority
+            />
           </div>
         </SectionReveal>
 

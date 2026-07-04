@@ -4,25 +4,25 @@ import type { SocialLink } from "@/lib/types";
 export const profile = {
   name: "Michał Szczepkowski",
   role: "Data Scientist",
-  email: "mszczepkowski2003@gmail.com",
+  email: "mszczepkowski.business@gmail.com",
   linkedin: "https://www.linkedin.com/in/michał-szczepkowski-6849362b8/",
   github: "https://github.com/mszczepkowski2003",
 
   // Real bio, extracted from the old site.
   bio: {
     en: `Data Scientist with over a year of experience in actuarial pricing modelling. Focused on transforming complex datasets into efficient, automated solutions. I am driven by a practical curiosity to understand the 'why' behind the data, bridging the gap between statistical research and production-ready code.`,
-    pl: `Data Scientist z ponad rocznym doświadczeniem w modelowaniu taryf aktuarialnych. Skupiony na przekształcaniu złożonych zbiorów danych w wydajne, zautomatyzowane rozwiązania. Napędza mnie praktyczna ciekawość, by zrozumieć „dlaczego” kryjące się za danymi — łącząc badania statystyczne z kodem gotowym do produkcji.`,
+    pl: `Data Scientist z ponad rocznym doświadczeniem w modelowaniu aktuarialnym. Skupiony na przekształcaniu złożonych zbiorów danych w wydajne, zautomatyzowane rozwiązania. Napędza mnie praktyczna ciekawość, by zrozumieć „dlaczego” kryjące się za danymi — łącząc badania statystyczne z kodem gotowym do produkcji.`,
   } satisfies Localized,
 
   // Invented augmentation — personal mission / "what drives me".
   mission: {
-    en: `I build models that survive contact with production. The interesting work lives in the gap between a clean notebook result and a system someone can actually depend on — and that gap is where I like to spend my time.`,
-    pl: `Buduję modele, które przetrwają zderzenie z produkcją. Najciekawsza praca kryje się w przepaści między czystym wynikiem z notatnika a systemem, na którym ktoś może naprawdę polegać — i to właśnie w tej przepaści lubię spędzać czas.`,
+    en: `I bridge the gap between experimental code and reliable production systems. I focus on building ML infrastructure and models that don't just work in a notebook, but perform predictably in the real world.`,
+    pl: `Łączę świat eksperymentalnego kodu z niezawodnymi systemami produkcyjnymi. Skupiam się na budowaniu modeli i infrastruktury ML, które nie tylko działają w notebookach, ale działają przewidywalnie w realnych warunkach.`,
   } satisfies Localized,
 
   drives: {
-    en: `Curiosity is the engine. I treat every project as a question rather than a deliverable: why does this pattern hold, where does it break, and what would it take to ship the answer? That mindset keeps me learning faster than any single role could.`,
-    pl: `Ciekawość jest napędem. Każdy projekt traktuję jak pytanie, a nie zadanie do odhaczenia: dlaczego ten wzorzec się utrzymuje, gdzie się załamuje i czego trzeba, by dostarczyć odpowiedź? To podejście sprawia, że uczę się szybciej niż w jakiejkolwiek pojedynczej roli.`,
+    en: `Curiosity is what drives my growth. I treat every project as a challenge to dive into understanding its unique constraints and finding the optimal solution. This approach is why I genuinely enjoy my work. Every new problem is an opportunity to sharpen my analytical and engineering skills.`,
+    pl: `Ciekawość to paliwo, które napędza mój rozwój. Każdy projekt traktuję jako wyzwanie, w które chcę się głęboko wgryźć oraz zrozumieć jego specyfikę i odnaleźć optymalne rozwiązania. To podejście sprawia, że czerpię ogromną satysfakcję z pracy, a każde nowe zadanie staje się okazją do rozwinięcia mojego warsztatu analitycznego i inżynieryjnego.`,
   } satisfies Localized,
 };
 
@@ -62,15 +62,15 @@ export const socials: SocialLink[] = [
   },
   {
     label: "Email",
-    handle: "mszczepkowski2003@gmail.com",
-    url: "mailto:mszczepkowski2003@gmail.com",
+    handle: "mszczepkowski.business@gmail.com",
+    url: "mailto:mszczepkowski.business@gmail.com",
   },
 ];
 
 export const heroQuote = {
   text: {
-    en: "There is nothing noble in being superior to your fellow man; true nobility is being superior to your former self.",
-    pl: "Nie ma nic szlachetnego w byciu lepszym od bliźniego; prawdziwa szlachetność to być lepszym od swojego dawnego ja.",
+    en: "There is nothing noble in being superior to your fellow man. True nobility is being superior to your former self.",
+    pl: "Nie ma nic szlachetnego w byciu lepszym od bliźniego. Prawdziwa szlachetność to być lepszym od swojego dawnego ja.",
   } satisfies Localized,
   author: "Ernest Hemingway",
 };
