@@ -49,6 +49,14 @@ export const skillGroups: { label: Localized; skills: string[] }[] = [
 // Flat highlighted stack for the landing / hero contexts.
 export const coreStack = ["Python", "R", "PostgreSQL"];
 
+// Personal interests outside of work — shown on the About page.
+export const interests: Localized[] = [
+  { en: "Travel", pl: "Podróże" },
+  { en: "Sport", pl: "Sport" },
+  { en: "Automotive", pl: "Motoryzacja" },
+  { en: "Cooking", pl: "Gotowanie" },
+];
+
 export const socials: SocialLink[] = [
   {
     label: "LinkedIn",

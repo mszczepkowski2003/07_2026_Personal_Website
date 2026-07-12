@@ -44,13 +44,6 @@ export function ProjectDetail({ project }: { project: Project }) {
         <p className="mt-5 max-w-2xl text-lg font-extralight leading-relaxed text-ink-muted">
           {project.oneLiner[lang]}
         </p>
-
-        {/* Hero visual placeholder */}
-        <div className="mt-10 flex aspect-[16/7] items-center justify-center border border-line bg-surface/40">
-          <span className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-ink-faint">
-            {ui.projectDetail.visual[lang]}
-          </span>
-        </div>
       </SectionReveal>
 
       {/* Headline metrics */}

@@ -24,6 +24,10 @@ export function StatCounter({ stat }: { stat: ProjectStat }) {
 
   useEffect(() => {
     if (!inView) return;
+    // Re-run from 0 on every (re)mount — including a language switch, which
+    // changes `locale` and re-renders the span back to its "0" JSX child.
+    // Without this, switching language leaves the counter stuck at 0.
+    count.set(0);
     const controls = animate(count, stat.value, {
       duration: 1.5,
       ease: EASE_OUT,

@@ -167,8 +167,8 @@ export const projects: Project[] = [
       pl: "Klasyfikacja obiektów latających z MobileNetV3",
     },
     oneLiner: {
-      en: "Edge-ready transfer learning to separate drones, birds, and aircraft at 95% weighted accuracy.",
-      pl: "Transfer learning gotowy na edge, rozróżniający drony, ptaki i samoloty z 95% ważoną dokładnością.",
+      en: "Ready to use in edge devices model that separates drones, birds and planes.",
+      pl: "Gotowy do wykorzystania w różnego rodzaju kamerach system rozpoznawania ptaków, samolotów oraz dronów.",
     },
     featured: true,
     mainLanguage: "English",
@@ -180,8 +180,8 @@ export const projects: Project[] = [
       "FastAPI",
     ],
     overview: {
-      en: "An image classifier built for edge deployment (e.g. CCTV hardware), separating drones, birds, and aircraft. The work balanced a small dataset and tight compute budgets against the need to generalize to new environments.",
-      pl: "Klasyfikator obrazów stworzony do wdrożenia na urządzeniach brzegowych (np. sprzęt CCTV), rozróżniający drony, ptaki i samoloty. Praca godziła mały zbiór danych i ograniczony budżet obliczeniowy z potrzebą generalizacji do nowych środowisk.",
+      en: "An image classifier built for edge deployment (e.g. CCTV hardware), separating drones, birds, and aircraft. The work balanced a small dataset and the limited on-device CPU power of the target hardware against the need to generalize to new environments — spanning an efficient data pipeline, a two-stage transfer-learning strategy, and a Dockerized inference API.",
+      pl: "Klasyfikator obrazów stworzony do wdrożenia na urządzeniach brzegowych (np. sprzęt CCTV), rozróżniający drony, ptaki i samoloty. Praca godziła mały zbiór danych i ograniczoną moc CPU sprzętu docelowego z potrzebą generalizacji do nowych środowisk — od wydajnego potoku danych, przez dwuetapową strategię transfer learningu, po skonteneryzowane API.",
     },
     stats: [
       {
@@ -200,19 +200,35 @@ export const projects: Project[] = [
     ],
     approach: [
       {
-        heading: { en: "Data Strategy", pl: "Strategia danych" },
+        heading: { en: "Key Challenges", pl: "Kluczowe wyzwania" },
         points: [
           {
-            en: "Managed a limited dataset with a 70/15/15 train/val/test split for robust validation.",
-            pl: "Zarządzałem ograniczonym zbiorem danych z podziałem 70/15/15 (trening/walidacja/test) dla wiarygodnej walidacji.",
+            en: "Data scarcity & splitting: managed a limited dataset with a 70/15/15 train/val/test split to ensure robust validation and final testing despite small sample sizes.",
+            pl: "Niedobór i podział danych: zarządzałem ograniczonym zbiorem, stosując podział 70/15/15 (trening/walidacja/test), by zapewnić wiarygodną walidację i test końcowy mimo małej liczby próbek.",
           },
           {
-            en: "Applied data augmentation to expand the effective training set and curb overfitting.",
-            pl: "Zastosowałem augmentację danych, by powiększyć efektywny zbiór treningowy i ograniczyć przeuczenie.",
+            en: "Preventing overfitting: countered high variance with several data-augmentation strategies, expanding the effective training set and improving generalization to new environments.",
+            pl: "Zapobieganie przeuczeniu: przeciwdziałałem wysokiej wariancji różnymi strategiami augmentacji danych, powiększając efektywny zbiór treningowy i poprawiając generalizację do nowych środowisk.",
           },
           {
-            en: "Used TensorFlow caching and prefetching to keep the GPU saturated and avoid I/O bottlenecks.",
-            pl: "Wykorzystałem cache'owanie i prefetching w TensorFlow, by utrzymać obciążenie GPU i uniknąć wąskich gardeł I/O.",
+            en: "Hardware constraints: balanced high-performance requirements against the limited CPU power of the target hardware (e.g. CCTV cameras), selecting an architecture that keeps computational latency low without sacrificing accuracy.",
+            pl: "Ograniczenia sprzętowe: godziłem wymagania wysokiej wydajności z ograniczoną mocą CPU sprzętu docelowego (np. kamery CCTV), wybierając architekturę o niskiej latencji obliczeniowej bez utraty dokładności.",
+          },
+        ],
+      },
+      {
+        heading: {
+          en: "Data Engineering & Optimization",
+          pl: "Inżynieria i optymalizacja danych",
+        },
+        points: [
+          {
+            en: "Pipeline efficiency: used TensorFlow's .cache() and prefetching to maximize training throughput, keeping the GPU saturated and preventing I/O memory bottlenecks.",
+            pl: "Wydajność potoku: wykorzystałem mechanizmy .cache() i prefetching w TensorFlow, by zmaksymalizować przepustowość treningu, utrzymać obciążenie GPU i uniknąć wąskich gardeł pamięci I/O.",
+          },
+          {
+            en: "Preprocessing: engineered a pipeline that integrated real-time data augmentation.",
+            pl: "Preprocessing: zaprojektowałem potok z zintegrowaną augmentacją danych w czasie rzeczywistym.",
           },
         ],
       },
@@ -223,16 +239,16 @@ export const projects: Project[] = [
         },
         points: [
           {
-            en: "Chose MobileNetV3-Large for depthwise separable convolutions — ideal for low-power edge devices.",
-            pl: "Wybrałem MobileNetV3-Large ze względu na sploty depthwise separable — idealne dla energooszczędnych urządzeń brzegowych.",
+            en: "Architecture selection: chose MobileNetV3-Large for its depthwise separable convolutions — ideal for edge devices with restricted power and memory.",
+            pl: "Dobór architektury: wybrałem MobileNetV3-Large ze względu na sploty depthwise separable — idealne dla urządzeń brzegowych o ograniczonej mocy i pamięci.",
           },
           {
-            en: "Stage 1: froze the ImageNet backbone and trained a custom head with Global Average Pooling.",
-            pl: "Etap 1: zamroziłem backbone ImageNet i wytrenowałem własną głowicę z Global Average Pooling.",
+            en: "Stage 1 — feature extraction: froze the ImageNet-pretrained MobileNet backbone to train a custom classification head, using Global Average Pooling instead of fully connected layers to cut parameter count and compute cost.",
+            pl: "Etap 1 — ekstrakcja cech: zamroziłem backbone MobileNet wstępnie wytrenowany na ImageNet, by wytrenować własną głowicę klasyfikacyjną, stosując Global Average Pooling zamiast warstw w pełni połączonych — dla mniejszej liczby parametrów i kosztu obliczeń.",
           },
           {
-            en: "Stage 2: unfroze deep layers and fine-tuned at a lower learning rate for drone/bird/aircraft features.",
-            pl: "Etap 2: odmroziłem głębokie warstwy i dostroiłem model z niższym learning rate pod cechy dronów/ptaków/samolotów.",
+            en: "Stage 2 — fine-tuning: unfroze the deep layers and retrained at a significantly lower learning rate to align the pretrained weights with the visual features of drones, birds, and aircraft.",
+            pl: "Etap 2 — dostrajanie: odmroziłem głębokie warstwy i wytrenowałem je ponownie ze znacznie niższym learning rate, by dopasować wstępnie wytrenowane wagi do cech wizualnych dronów, ptaków i samolotów.",
           },
         ],
       },
@@ -240,28 +256,24 @@ export const projects: Project[] = [
         heading: { en: "Deployment", pl: "Wdrożenie" },
         points: [
           {
-            en: "Served the model as a lightweight FastAPI inference API.",
-            pl: "Udostępniłem model jako lekkie API inferencyjne we FastAPI.",
+            en: "Production readiness: deployed the final model as a RESTful API with FastAPI — a lightweight interface for real-time inference.",
+            pl: "Gotowość produkcyjna: wdrożyłem finalny model jako API RESTful we FastAPI — lekki interfejs do inferencji w czasie rzeczywistym.",
           },
           {
-            en: "Fully Dockerized for environmental consistency across deployment targets.",
-            pl: "W pełni skonteneryzowany dla spójności środowiska między celami wdrożenia.",
+            en: "Containerization: fully Dockerized the application for environmental consistency and easy portability across production servers.",
+            pl: "Konteneryzacja: w pełni skonteneryzowałem aplikację (Docker) dla spójności środowiska i łatwej przenośności między serwerami produkcyjnymi.",
           },
         ],
       },
     ],
     results: [
       {
-        en: "95% weighted accuracy on the held-out test set.",
-        pl: "95% ważonej dokładności na wydzielonym zbiorze testowym.",
+        en: "Achieved 95% weighted accuracy, showing the model separates classes well even with the constraints of a small fine-tuning dataset.",
+        pl: "Osiągnąłem 95% ważonej dokładności — model dobrze rozróżnia klasy nawet przy ograniczeniach małego zbioru dostrajającego.",
       },
       {
-        en: "Error analysis surfaced edge cases (distant/blurry objects) as a roadmap for future data collection.",
-        pl: "Analiza błędów ujawniła przypadki brzegowe (odległe/rozmyte obiekty) jako plan dalszego zbierania danych.",
-      },
-      {
-        en: "Architecture chosen for low-latency CPU inference on constrained hardware.",
-        pl: "Architektura dobrana pod niskolatencyjną inferencję na CPU na ograniczonym sprzęcie.",
+        en: "Post-training error analysis surfaced specific edge cases (distant or blurry objects), providing a roadmap for future data collection.",
+        pl: "Analiza błędów po treningu ujawniła konkretne przypadki brzegowe (odległe lub rozmyte obiekty), wyznaczając plan dalszego zbierania danych.",
       },
     ],
     links: [
@@ -356,64 +368,6 @@ export const projects: Project[] = [
       note: {
         en: "This project is a pipeline study — a live demo slot is reserved here for a future interactive version.",
         pl: "Ten projekt to studium pipeline'u — miejsce na demo na żywo jest zarezerwowane pod przyszłą wersję interaktywną.",
-      },
-    },
-  },
-  {
-    // INVENTED placeholder project (clearly fictional) — fills the grid.
-    slug: "claims-severity-modelling",
-    title: {
-      en: "Claims Severity Modelling",
-      pl: "Modelowanie wysokości szkód",
-    },
-    oneLiner: {
-      en: "Benchmarking classical GLMs against gradient boosting for insurance claim severity.",
-      pl: "Porównanie klasycznych GLM-ów z gradient boostingiem dla wysokości szkód ubezpieczeniowych.",
-    },
-    featured: false,
-    invented: true,
-    mainLanguage: "English",
-    techStack: ["Python", "R", "Scikit-Learn", "XGBoost", "statsmodels"],
-    overview: {
-      en: "A study comparing the interpretability of generalized linear models against the raw predictive power of gradient-boosted trees for modelling the severity of insurance claims — directly informed by actuarial pricing work.",
-      pl: "Studium porównujące interpretowalność uogólnionych modeli liniowych z surową siłą predykcyjną drzew wzmacnianych gradientowo w modelowaniu wysokości szkód ubezpieczeniowych — inspirowane bezpośrednio pracą przy taryfikacji aktuarialnej.",
-    },
-    approach: [
-      {
-        heading: { en: "Modelling", pl: "Modelowanie" },
-        points: [
-          {
-            en: "Fitted Tweedie and Gamma GLMs as interpretable baselines.",
-            pl: "Dopasowałem modele GLM Tweedie i Gamma jako interpretowalne punkty odniesienia.",
-          },
-          {
-            en: "Trained gradient-boosted trees with monotonic constraints to preserve actuarial intuition.",
-            pl: "Wytrenowałem drzewa wzmacniane gradientowo z ograniczeniami monotoniczności, by zachować intuicję aktuarialną.",
-          },
-          {
-            en: "Compared models on calibration, lift, and Gini alongside raw error.",
-            pl: "Porównałem modele pod kątem kalibracji, liftu i współczynnika Giniego, obok surowego błędu.",
-          },
-        ],
-      },
-    ],
-    results: [
-      {
-        en: "Quantified the interpretability-vs-accuracy trade-off for a pricing context.",
-        pl: "Skwantyfikowałem kompromis między interpretowalnością a dokładnością w kontekście taryfikacji.",
-      },
-      {
-        en: "Monotonic constraints kept the boosted model aligned with domain expectations.",
-        pl: "Ograniczenia monotoniczności utrzymały model wzmacniany w zgodzie z oczekiwaniami dziedzinowymi.",
-      },
-    ],
-    links: [],
-    demo: {
-      status: "coming-soon",
-      kind: "component",
-      note: {
-        en: "A premium-estimator demo is planned for this slot.",
-        pl: "Demo estymatora składki jest planowane dla tego miejsca.",
       },
     },
   },

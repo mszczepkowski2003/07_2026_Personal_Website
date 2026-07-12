@@ -40,11 +40,11 @@ export function EducationContent() {
       {/* Courses & certifications */}
       <SectionReveal className="mt-20">
         <h2 className="eyebrow mb-8">{ui.education.courses[lang]}</h2>
-        <div className="grid max-w-3xl grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
+        <div className="grid max-w-3xl grid-cols-1 gap-3">
           {courses.map((course) => (
             <div
               key={course.title.en}
-              className="flex items-start justify-between gap-4 bg-surface-card/50 p-6"
+              className="flex items-start justify-between gap-4 border border-line bg-surface-card/50 p-6"
             >
               <div>
                 <h3 className="font-heading text-base font-medium text-ink">
@@ -53,6 +53,24 @@ export function EducationContent() {
                 <p className="mt-1 text-sm text-ink-muted">
                   {course.institution[lang]}
                 </p>
+                {course.certificateUrl && (
+                  <a
+                    href={course.certificateUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group mt-4 inline-flex items-center gap-2 border border-accent/40 px-3.5 py-2 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-accent transition-colors hover:border-accent hover:bg-accent/10"
+                  >
+                    {ui.education.certificate[lang]}
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">
+                      ↗
+                    </span>
+                  </a>
+                )}
+                {course.certificateOnLinkedIn && (
+                  <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-faint">
+                    {ui.education.certificateLinkedin[lang]}
+                  </p>
+                )}
               </div>
               <span className="font-mono text-xs uppercase tracking-widest text-ink-faint">
                 {course.period}
