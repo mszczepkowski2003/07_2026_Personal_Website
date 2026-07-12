@@ -1,15 +1,9 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useRef, useState } from "react";
-import {
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ScrollIndicator } from "@/components/shared/ScrollIndicator";
-import { heroQuote } from "@/data/profile";
 import { materializeChar, materializeContainer } from "@/lib/animations";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { ui } from "@/lib/i18n/ui";
@@ -50,13 +44,12 @@ function MaterializeWord({
 }
 
 /**
- * Landing intro = ONE pinned stage that crossfades from the shader + Hemingway
- * quote into the oversized name reveal as you scroll — no hard cut between
- * sections. Scroll progress drives: shader dim, quote fade-out, name materialize.
+ * Landing intro = ONE pinned stage. The oversized name materializes on load
+ * over the shader backdrop; scroll then dims the shader and fades the scroll
+ * cue as the stage hands off to the page below — no hard cut between sections.
  */
 export function LandingIntro() {
   const ref = useRef<HTMLDivElement>(null);
-  const [revealName, setRevealName] = useState(false);
   const { lang } = useLanguage();
 
   const { scrollYProgress } = useScroll({
@@ -66,17 +59,10 @@ export function LandingIntro() {
 
   // Shader stays faintly alive (idea #6) rather than disappearing entirely.
   const shaderOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.16]);
-  const quoteOpacity = useTransform(scrollYProgress, [0.04, 0.26], [1, 0]);
-  const quoteY = useTransform(scrollYProgress, [0.04, 0.26], [0, -40]);
-  const cueOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
-
-  // Trigger the per-character name reveal once the quote has cleared.
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    setRevealName(v >= 0.24);
-  });
+  const cueOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
 
   return (
-    <section ref={ref} className="relative h-[240vh]">
+    <section ref={ref} className="relative h-[160vh]">
       <div className="sticky top-0 h-svh overflow-hidden bg-base">
         {/* Shader backdrop */}
         <motion.div style={{ opacity: shaderOpacity }} className="absolute inset-0">
@@ -89,27 +75,12 @@ export function LandingIntro() {
         {/* Dissolve to base at the bottom for a fluid handoff into the page */}
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-base" />
 
-        {/* Quote layer */}
-        <motion.div
-          style={{ opacity: quoteOpacity }}
-          className="absolute inset-0 z-10 flex items-center justify-center px-6"
-        >
-          <motion.blockquote style={{ y: quoteY }} className="max-w-3xl text-center">
-            <p className="text-balance font-body text-2xl font-extralight leading-snug text-ink-soft sm:text-3xl md:text-4xl">
-              &ldquo;{heroQuote.text[lang]}&rdquo;
-            </p>
-            <cite className="mt-6 block font-mono text-xs uppercase not-italic tracking-[0.3em] text-ink-muted">
-              — {heroQuote.author}
-            </cite>
-          </motion.blockquote>
-        </motion.div>
-
-        {/* Identity layer (crossfades in as the quote clears) */}
+        {/* Identity layer — materializes on load over the shader */}
         <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
           <motion.div
             variants={materializeContainer}
             initial="hidden"
-            animate={revealName ? "visible" : "hidden"}
+            animate="visible"
             className="text-center"
           >
             <motion.p variants={materializeChar} className="eyebrow mb-6">

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { profile, skillGroups } from "@/data/profile";
+import { interests, profile, skillGroups } from "@/data/profile";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { SectionReveal } from "@/components/shared/SectionReveal";
 import { SkillTag } from "@/components/shared/SkillTag";
@@ -70,6 +70,16 @@ export function AboutContent() {
                 ))}
               </div>
             </div>
+          ))}
+        </div>
+      </SectionReveal>
+
+      {/* Interests */}
+      <SectionReveal className="mt-20">
+        <h2 className="eyebrow mb-6">{ui.about.interests[lang]}</h2>
+        <div className="flex flex-wrap gap-2.5">
+          {interests.map((interest) => (
+            <SkillTag key={interest.en}>{interest[lang]}</SkillTag>
           ))}
         </div>
       </SectionReveal>

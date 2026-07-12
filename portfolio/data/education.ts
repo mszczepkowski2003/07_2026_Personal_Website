@@ -47,5 +47,38 @@ export const courses: EducationEntry[] = [
     },
     institution: { en: "Coursera", pl: "Coursera" },
     period: "2025",
+    certificateUrl:
+      "https://www.coursera.org/account/accomplishments/specialization/UBF1SQHXBZZL",
+  },
+  {
+    title: {
+      en: "Predictive Modelling in Actuarial Science with Neural Networks",
+      pl: "Predictive Modelling in Actuarial Science with Neural Networks",
+    },
+    institution: {
+      en: "Polish Society of Actuaries",
+      pl: "Polskie Stowarzyszenie Aktuariuszy",
+    },
+    period: "2025",
+    certificateOnLinkedIn: true,
+  },
+  {
+    title: {
+      en: "Design Thinking",
+      pl: "Design Thinking",
+    },
+    institution: { en: "Infiro", pl: "Infiro" },
+    period: "2025",
+    certificateOnLinkedIn: true,
+  },
+  {
+    title: {
+      en: "Python for Machine Learning & Data Science",
+      pl: "Python for Machine Learning & Data Science",
+    },
+    institution: { en: "Udemy", pl: "Udemy" },
+    period: "2024",
+    certificateUrl:
+      "https://www.udemy.com/certificate/UC-50b5b564-dbd0-4694-a6f5-7ea4bdda7f42/",
   },
 ];

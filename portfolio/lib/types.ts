@@ -78,6 +78,10 @@ export interface EducationEntry {
   highlight?: boolean;
   /** A distinction tied to this entry — e.g. a thesis award under a degree. */
   award?: EducationAward;
+  /** Link to a certificate proving completion (courses only). */
+  certificateUrl?: string;
+  /** No public link, but the certificate is visible on the LinkedIn profile. */
+  certificateOnLinkedIn?: boolean;
 }
 
 export interface SocialLink {

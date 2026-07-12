@@ -41,6 +41,7 @@ export const ui = {
     mission: { en: "Mission", pl: "Misja" },
     drives: { en: "What drives me", pl: "Co mnie napędza" },
     skills: { en: "Skills & Tools", pl: "Umiejętności i narzędzia" },
+    interests: { en: "Interests", pl: "Zainteresowania" },
   },
   contact: {
     eyebrow: { en: "Say Hello", pl: "Przywitaj się" },
@@ -59,13 +60,18 @@ export const ui = {
     },
     university: { en: "University", pl: "Studia" },
     courses: { en: "Courses & Certifications", pl: "Kursy i certyfikaty" },
+    certificate: { en: "View Certificate", pl: "Zobacz certyfikat" },
+    certificateLinkedin: {
+      en: "Certificate available on my LinkedIn",
+      pl: "Certyfikat dostępny na moim LinkedIn",
+    },
   },
   experience: {
     eyebrow: { en: "Career", pl: "Kariera" },
     title: { en: "Experience", pl: "Doświadczenie" },
     intro: {
-      en: "Where I've applied data science in practice — actuarial pricing, consulting, and academic research.",
-      pl: "Gdzie zastosowałem data science w praktyce — modelowanie taryf, konsulting i badania naukowe.",
+      en: "Where I've applied data science in practice.",
+      pl: "Gdzie stosowałem data science w praktyce.",
     },
     placeholder: { en: "* placeholder entry", pl: "* wpis poglądowy" },
   },
