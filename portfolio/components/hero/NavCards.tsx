@@ -34,9 +34,17 @@ export function NavCards() {
             <motion.div key={card.href} variants={fadeUp}>
               <Link
                 href={card.href}
-                className="group relative flex min-h-[220px] flex-col justify-between bg-base p-8 transition-colors duration-300 hover:bg-surface-card md:p-10"
+                className="group relative flex min-h-[220px] flex-col overflow-hidden bg-base p-8 transition-colors duration-300 hover:bg-surface-card md:p-10"
               >
-                <div className="flex items-start justify-between">
+                {/* Oversized ghost number watermark */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -bottom-6 right-3 z-0 select-none font-heading text-[8rem] font-semibold leading-none text-white/[0.04] transition-colors duration-300 group-hover:text-accent/[0.06] md:text-[10rem]"
+                >
+                  0{i + 1}
+                </span>
+
+                <div className="relative z-10 flex items-start justify-between">
                   <span className="font-mono text-xs text-ink-faint">
                     0{i + 1}
                   </span>
@@ -45,13 +53,10 @@ export function NavCards() {
                   </span>
                 </div>
 
-                <div>
+                <div className="relative z-10 mt-5">
                   <h2 className="font-heading text-3xl font-medium tracking-tight text-ink transition-colors duration-200 group-hover:text-accent md:text-4xl">
                     {card.label[lang]}
                   </h2>
-                  <p className="mt-3 max-w-xs text-sm font-extralight leading-relaxed text-ink-muted">
-                    {card.teaser[lang]}
-                  </p>
                 </div>
               </Link>
             </motion.div>
