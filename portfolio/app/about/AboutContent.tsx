@@ -35,15 +35,16 @@ export function AboutContent() {
           <div className="space-y-8">
             <div>
               <h2 className="eyebrow mb-4">{ui.about.bio[lang]}</h2>
-              <p className="text-lg font-extralight leading-relaxed text-ink-soft">
-                {profile.bio[lang]}
-              </p>
-            </div>
-            <div>
-              <h2 className="eyebrow mb-4">{ui.about.mission[lang]}</h2>
-              <p className="text-lg font-extralight leading-relaxed text-ink-soft">
-                {profile.mission[lang]}
-              </p>
+              <div className="space-y-5">
+                {profile.bio[lang].split("\n\n").map((paragraph, i) => (
+                  <p
+                    key={i}
+                    className="text-lg font-extralight leading-relaxed text-ink-soft"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </div>
             <div>
               <h2 className="eyebrow mb-4">{ui.about.drives[lang]}</h2>

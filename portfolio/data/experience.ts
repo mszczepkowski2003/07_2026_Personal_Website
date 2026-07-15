@@ -10,7 +10,7 @@ export const experience: ExperienceEntry[] = [
     period: { en: "March 2025 — June 2026", pl: "Marzec 2025 — Czerwiec 2026" },
     description: {
       en: "Worked within the consulting company specialising in actuarial pricing modelling, where I transformed complex insurance datasets into automated, production-ready pricing solutions.",
-      pl: "Pracowałem w firmie konsultingowej specjalizującej się w modelowaniu ubezpieczeniowym, gdzie wykorzystywałem skomplikowane zbiory danych do tworzenia produkcyjnych rozwiązań pricingowych.",
+      pl: "Pracowałem w firmie konsultingowej specjalizującej się w modelowaniu ubezpieczeniowym, gdzie na podstawie złożonych zbiorów danych tworzyłem produkcyjne rozwiązania pricingowe.",
     },
   },
 ];

@@ -74,6 +74,12 @@ export const ui = {
       pl: "Gdzie stosowałem data science w praktyce.",
     },
     placeholder: { en: "* placeholder entry", pl: "* wpis poglądowy" },
+    skillsSource: {
+      en: "Additional sources of my knowledge",
+      pl: "Dodatkowe źródła mojej wiedzy",
+    },
+    practical: { en: "Practical", pl: "Praktyczne" },
+    theoretical: { en: "Theoretical", pl: "Teoretyczne" },
   },
   projects: {
     eyebrow: { en: "Selected Work", pl: "Wybrane prace" },

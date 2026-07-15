@@ -113,10 +113,13 @@ export function ProjectDetail({ project }: { project: Project }) {
         </SectionReveal>
       )}
 
-      {/* Demo slot */}
-      <SectionReveal className="mt-20">
-        <DemoSlot demo={project.demo} title={project.title[lang]} />
-      </SectionReveal>
+      {/* Demo slot — only rendered once a demo is actually live. Non-live
+          demos show nothing (no "coming soon" placeholder). */}
+      {project.demo.status === "live" && (
+        <SectionReveal className="mt-20">
+          <DemoSlot demo={project.demo} title={project.title[lang]} />
+        </SectionReveal>
+      )}
 
       {/* Links */}
       {project.links.length > 0 && (
