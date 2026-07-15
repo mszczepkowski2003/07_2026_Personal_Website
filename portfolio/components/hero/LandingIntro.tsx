@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ScrollIndicator } from "@/components/shared/ScrollIndicator";
+import { LanguageToggle } from "@/components/shared/LanguageToggle";
 import { materializeChar, materializeContainer } from "@/lib/animations";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { ui } from "@/lib/i18n/ui";
@@ -83,7 +84,11 @@ export function LandingIntro() {
             animate="visible"
             className="text-center"
           >
-            <motion.p variants={materializeChar} className="eyebrow mb-6">
+            <motion.p
+              variants={materializeChar}
+              className="eyebrow mb-6"
+              style={{ fontSize: "1.1rem" }}
+            >
               {ui.hero.role[lang]}
             </motion.p>
             {/* Style A — Monolith: name + surname share identical formatting
@@ -102,11 +107,12 @@ export function LandingIntro() {
           </motion.div>
         </div>
 
-        {/* Scroll cue */}
+        {/* Subtle language switch + scroll cue, stacked at the bottom */}
         <motion.div
           style={{ opacity: cueOpacity }}
-          className="absolute inset-x-0 bottom-10 z-10 flex justify-center"
+          className="absolute inset-x-0 bottom-10 z-10 flex flex-col items-center gap-6"
         >
+          <LanguageToggle className="scale-90 opacity-60 transition-opacity duration-200 hover:opacity-100" />
           <ScrollIndicator />
         </motion.div>
       </div>

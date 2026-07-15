@@ -8,16 +8,15 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/michał-szczepkowski-6849362b8/",
   github: "https://github.com/mszczepkowski2003",
 
-  // Real bio, extracted from the old site.
+  // Two-paragraph bio (professional + personal approach). Paragraphs are
+  // separated by a blank line and rendered individually on the About page.
   bio: {
-    en: `Data Scientist with over a year of experience in actuarial pricing modelling. Focused on transforming complex datasets into efficient, automated solutions. I am driven by a practical curiosity to understand the 'why' behind the data, bridging the gap between statistical research and production-ready code.`,
-    pl: `Data Scientist z ponad rocznym doświadczeniem w modelowaniu aktuarialnym. Skupiony na przekształcaniu złożonych zbiorów danych w wydajne, zautomatyzowane rozwiązania. Napędza mnie praktyczna ciekawość, by zrozumieć „dlaczego” kryjące się za danymi — łącząc badania statystyczne z kodem gotowym do produkcji.`,
-  } satisfies Localized,
+    en: `Data Scientist with over a year of consulting experience, where I managed the full lifecycle of predictive pricing models and optimized pipelines for high-dimensional datasets. I've learned that a model's value lies not in its accuracy alone, but in its ability to drive real-world business decisions. I pair statistical rigor with data storytelling, turning scattered, seemingly meaningless fragments of data into clear answers and solutions people can act on.
 
-  // Invented augmentation — personal mission / "what drives me".
-  mission: {
-    en: `I bridge the gap between experimental code and reliable production systems. I focus on building ML infrastructure and models that don't just work in a notebook, but perform predictably in the real world.`,
-    pl: `Łączę świat eksperymentalnego kodu z niezawodnymi systemami produkcyjnymi. Skupiam się na budowaniu modeli i infrastruktury ML, które nie tylko działają w notebookach, ale działają przewidywalnie w realnych warunkach.`,
+My approach is shaped as much by my basketball past as by my professional experience. Sport taught me two lessons I apply every day: discipline, resilience, and curiosity are what actually drive growth, and that individual stats mean nothing without a team win. I look for responsibility, adapt quickly to the environment around me, and measure my work by the team's collective success, not just my own output.`,
+    pl: `Data Scientist z ponad rocznym doświadczeniem w konsultingu, gdzie zarządzałem pełnym cyklem życia predykcyjnych modeli pricingowych i optymalizowałem pipeline'y dla wielowymiarowych zbiorów danych. Nauczyłem się, że wartość modelu nie leży jedynie w jego dokładności, lecz w zdolności do wspierania realnych decyzji biznesowych. W mojej pracy łączę statystyczną rzetelność z data storytellingiem, przekształcając rozproszone, z pozoru nic nie znaczące dane w jasne odpowiedzi i rozwiązania, na podstawie których można działać.
+
+Moje podejście do pracy ukształtowane zostało zarówno przez moją przeszłość koszykarską, jak i doświadczenie zawodowe. Sport nauczył mnie dwóch rzeczy, które stosuję każdego dnia: dyscyplina, odporność i ciekawość naprawdę napędzają rozwój, oraz że indywidualne statystyki nic nie znaczą bez zwycięstwa zespołu. Aktywnie poszukuję odpowiedzialności, szybko adaptuję się do otoczenia i mierzę swoją pracę wspólnym sukcesem zespołu, a nie tylko własnym wynikiem.`,
   } satisfies Localized,
 
   drives: {
@@ -34,11 +33,11 @@ export const skillGroups: { label: Localized; skills: string[] }[] = [
   },
   {
     label: { en: "ML & Modelling", pl: "ML i modelowanie" },
-    skills: ["Scikit-Learn", "TensorFlow", "PyTorch", "XGBoost", "Optuna"],
+    skills: ["Scikit-Learn", "TensorFlow", "XGBoost", "Optuna", "Statistics"],
   },
   {
     label: { en: "Data & Infra", pl: "Dane i infrastruktura" },
-    skills: ["PostgreSQL", "Pandas", "Docker", "FastAPI", "Git"],
+    skills: ["PostgreSQL", "Pandas", "NumPy", "Docker", "FastAPI", "Git"],
   },
   {
     label: { en: "Reporting", pl: "Raportowanie" },
